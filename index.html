@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css
+    ">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css
+    ">
+    <title>Document</title>
+    <style>
+         @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,300&family=Poppins:wght@300;400;500;600;700&display=swap');
+         *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+         }
+        :root{
+            /* color */
+            --body-color: #E4E9F7;
+            --sidebar-color: #FFF;
+            --primary-color: #695CFE;
+            --primary-color-light: #F6F5FF;
+            --toggle-color: #DDD;
+            --text-color: #707070;
+            /* transition */
+            --tran-02: all 0.2s ease ;
+            --tran-03: all 0.3s ease ;
+            --tran-04: all 0.4s ease ;
+            --tran-05: all 0.5s ease ;
+        }
+        /* body{
+            background-color: var(--body-color);
+        } */
+        body{
+            background-color: aqua;
+        }
+        .sidebar{
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 290px;
+            height: 100%;
+            background-color: var(--sidebar-color);
+            transition: var(--tran-03);
+            box-shadow: 0 0 10px;
+            z-index: 1;
+        }
+        .sidebar header{
+            color: var(--text-color);
+            font-size: 28px;
+            line-height: 70px;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            user-select: none;            
+        }
+        .sidebar a{
+            display: block;
+            color: var(--text-color);
+            height: 65px;
+            width: 100%;
+            line-height: 65px;
+            padding-left: 30px;
+            border-bottom: 1px solid var(--text-color);
+            border-top: 1px solid black;
+            border-left: 5px solid transparent;
+            font-family: 'Open Sans',sans-serif ;
+            transition: var(--tran-05);
+            text-decoration: none;
+        }
+        a:hover{
+            border-left: 5px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+        .sidebar a i{
+            font-size: 23px;
+            margin-right: 16px;
+        }
+        .sidebar a span{
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        #check{
+            display: none;
+        }
+        label #btn, label #cancel{
+            position: absolute;
+            cursor: pointer;
+            background-color: black;
+            height: 45px;
+            width: 45px;
+            text-align: center;
+            line-height: 45px;
+            color: white;
+            font-size: 29px;
+            margin: 15px 30px;
+            border-radius: 5px;
+            transition: var(--tran-03);
+        } 
+        label #cancel{
+            opacity: 0;
+            visibility: hidden;
+        }
+        #check:checked ~ label #btn{
+            margin-left: 305px;
+            opacity: 0;
+            visibility: hidden;
+        }
+        #check:checked ~ label #cancel{
+            margin-left: 305px;
+            opacity: 1;
+            visibility: visible;
+        }
+        #check:checked ~ .sidebar{
+            left: 0;
+        }
+        .popup{
+            width: 380px;
+    height:300px;
+    /* border:5px solid black; */
+    box-shadow: 0 0 20px grey;
+    border-radius: 25px;
+    position: fixed;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    opacity:0;
+    z-index: -1;
+    background-color: white;
+    z-index: 1;
+        }
+        .popup div h2{
+            position: relative;
+            top: 20px;
+            text-align: center;
+        }
+        .popup div .popupContant{
+            position: relative;
+            top: 55px;
+            /* left: 20px; */
+            /* border: 1px solid; */
+        }
+        .popup div .popupContant p {
+            position: relative;
+            left: 20px;
+            font-size: 17px;
+        }
+        .popup div .close{
+            /* border: 1px solid; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            top: 80px;
+           
+        }
+        .popup div .close button{
+            font-size: 19px;
+            font-weight: 700;
+        }
+        .Todo .getTodo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            top: 80px;
+            gap: 10px;
+        }
+       .Todo .getTodo input{
+        width: 20%;
+       }
+       .Todo #container_tabel{
+        position: relative;
+        top: 130px;
+       }
+       #container_tabel{
+
+        width: 100%;
+        height: 100px;
+       }
+       #container_tabel div{
+        /* border: 3px solid; */
+        width: 100%;
+        height: 45vh;
+        overflow: auto;
+        text-align: center;
+
+       }
+       table tr>th{
+        position: sticky;
+        top: 0;
+        /* z-index: 1; */
+       }
+       #updated{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        justify-content: space-around;
+        /* gap: 30px; */
+
+       }
+       .progress{
+        /* display: flex; */
+        /* justify-content: center; */
+        /* align-items: center; */
+        width: 80%;
+        height: 30px;
+        position: relative;
+        /* left: 20px; */
+        margin: auto;
+        top: 25vh;
+        font-size: 18px;
+        
+       }
+       @media (max-width:400px) {
+        .popup{
+            width: 99%;
+        }
+        .Todo .getTodo{
+            display: flex;
+            flex-direction: column;
+        }
+        .Todo .getTodo input{
+            width: 90%;
+        }
+        .Todo .getTodo button{
+            width: 40%;
+        }
+       }
+    </style>
+</head>
+<body>
+    <div class="todo">
+        <div class="siddebar">
+            <input type="checkbox" id="check">
+            <label for="check">
+                <i class="fas fa-bars" id="btn"></i>
+                <i class="fas fa-times" id="cancel"></i>
+            </label>
+            <div class="sidebar">
+                <header>My menu</header>
+                <a id="showProfile" class="active" href="#"><i class="fas fa-user"></i><span>Your profile</span></a>
+                <a class="active" href="./index.html"><i class="fas fa-qrcode"></i><span>Dashboard</span></a>
+                <a href="#"><i class="fas fa-link"></i><span>Shortcuts</span></a>
+                <a href="#"><i class="fas fa-stream"></i><span>Overview</span></a>
+                <a href="#"><i class="fas fa-calendar"></i><span>Events</span></a>
+                <a href="#"><i class="fas fa-question-circle"></i><span>About</span></a>
+                <a href="#"><i class="fas fa-sliders-h"></i><span>Services</span></a>
+                <a href="#"><i class="fas fa-envelope"></i><span>Contant</span></a>
+                <a id="logOut" href="#"><i class="fa-solid fa-arrow-right-from-bracket"></i><span>Log out</span></a>
+            </div>
+            <div class="popup">
+                <div>
+                    <h2>Your Profile</h2>
+                    <div class="popupContant">
+                        <p id="name">Name : suffiyan ahmed Khan</p>
+                        <p id="email">Email : suffiyanahmed123@gmail.com</p>
+                        <p id="phoneNo">03131004416</p>
+                    </div>
+                    <div class="close">
+                        <button class="btn btn-warning" id="closed">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="Todo" >
+            <div class="getTodo">
+                <input placeholder="Enter something" class="form-control" type="text" id="getTodo">
+                <button class="btn btn-success" id="add">Add</button>
+                <button class="btn btn-danger" id="adeleteed">Delete All</button>
+            </div>
+            <div id="container_tabel">
+                <div>
+                    <table  class="table table-striped table-bordered container">
+                        <thead>
+                            <tr>
+                                <th>S.NO</th>
+                                <th>Task</th>
+                                <th>Date / Time</th>
+                                <th>Delete / Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody id="newRow">
+                        </tbody>
+                    </table> 
+                 </div>
+            </div>
+            <div style="display: none;" class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                <div class="progress-bar" ></div>
+              </div>
+        </div>
+        <!--  -->
+        <!-- style="width: 25%" -->
+        
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js
+    "></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script type="module" src="app.js"></script>
+</body>
+</html>
